@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f5f5f5; /* Light gray background */
+            font-family: 'Arial', sans-serif; /* Use a common sans-serif font */
+            padding-top: 70px; /* Adjust the top padding to accommodate the fixed navbar */
+        }
+
+        .navbar {
+            background-color: #eea236;
+            color: white;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .navbar-nav li a {
+            color: rgb(96, 25, 25);
+            font-weight: bold;
+        }
+
+        .card {
+            margin-top: 20px;
+            border: 1px solid #ddd; /* Add a subtle border to the card */
+            border-radius: 5px; /* Optional: Add rounded corners to the card */
+            transition: box-shadow 0.3s ease; /* Add transition for a subtle effect */
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow on hover */
+        }
+
+        .card img {
+            max-width: 100%; /* Make sure the image doesn't exceed the card boundaries */
+            border-bottom: 1px solid #ddd; /* Optional: Add a border at the bottom of the image */
+           
+        }
+
+        .card-body {
+            padding: 15px;
+            justify-content: center;
+        }
+
+        .text-white {
+            color: #333; /* Dark gray text color for better readability */
+        }
+        .title{
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand">My Book Recommender</a>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/recommend">Recommend</a></li>
+               
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">Top 50 Books</h1>
+            </div>
+
+            {% for i in range(book_name|length) %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{ image[i] }}" alt="{{ book_name[i] }}">
+                            <p class="text-white title">{{ book_name[i] }}</p>
+                            <h4 class="text-white">{{ author[i] }}</h4>
+                            <h4 class="text-white">Votes :  {{ votes[i] }}</h4>
+                            <h4 class="text-white">Rating :  {{ rating[i] }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
